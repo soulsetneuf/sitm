@@ -22,6 +22,7 @@
     <!-- CSS App -->
     <link rel="stylesheet" type="text/css" href="{{URL::asset('/css/style.css')}}">
     <link rel="stylesheet" type="text/css" href="{{URL::asset('/css/themes/flat-blue.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{URL::asset('/css/dropzone.css')}}">
 </head>
 
 <body class="flat-blue">
@@ -153,6 +154,7 @@
             <!-- Javascript -->
             
             <script type="text/javascript" src="{{URL::asset('/js/app.js')}}"></script>
+            <script type="text/javascript" src="{{URL::asset('/js/dropzone.js')}}"></script>
             @yield('script_content')
 </body>
 

@@ -10,4 +10,9 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+    public function notFound($value)
+    {
+        if(is_null($value))
+            abort(404);
+    }
 }

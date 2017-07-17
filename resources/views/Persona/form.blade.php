@@ -1,1 +1,8 @@
-ECHO est� activado.
+@include("input.text",["text_input"=>"ci","text_label"=>"CI"])
+@include("input.text",["text_input"=>"nombre","text_label"=>"Nombre"])
+@include("input.text",["text_input"=>"apellido_paterno","text_label"=>"Paterno"])
+@include("input.text",["text_input"=>"apellido_materno","text_label"=>"Materno"])
+@include("input.text",["text_input"=>"direccion","text_label"=>"Dirección"])
+@include("input.select",["text_input"=>"sexo","text_label"=>"Sexo","array_options"=>config("options.sexo")])
+@include("input.date",["text_input"=>"fecha_nacimiento","text_label"=>"Fecha de nacimiento"])
+@include("input.text",["text_input"=>"telefono","text_label"=>"Teléfono"])
