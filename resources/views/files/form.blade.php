@@ -42,7 +42,7 @@
                     myDropzone.processQueue();
                 });
                 this.on("addedfile", function(file) {
-                    alert("file uploaded");
+                    alert("file uploaded2");
                 });
 
                 this.on("complete", function(file) {

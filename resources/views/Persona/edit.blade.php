@@ -6,24 +6,21 @@
 @section('rptasistencias_collapse','class="panel-collapse collapse"')
 @section('content')
     <ol class="breadcrumb">
-        <li><a href="{{ route($path_controller.'.index') }}">Inicio</a></li>
-        <li class="active"><a href="{{ route($path_controller.'.edit', $value->id) }}">Editar datos personales</a></li>
+        @include(config("options.breadcrumb_li"),["class"=>"","page"=>"index","id"=>"","title"=>"Inicio"])
+        @include(config("options.breadcrumb_li"),["class"=>"active","page"=>"edit","id"=>$value->id,"title"=>"Editar datos personales"])
     </ol>
     <br>
     <div class="card">
-        <div class="card-header">
-            <div class="card-title">
-                <div class="title">Editar datos personales</div>
-            </div>
-        </div>
+        @component(config("options.card_header")) @slot("title") Editar datos personales @endslot @endcomponent
         <div class="card-body">
             {!! Form::model($value,['route' => [$path_controller.'.update',$value->id], 'method' => 'put',"files"=>"true"]) !!}
             @include($path_view.".form")
             <div class="form-group">
                 <div class="col-md-6 col-md-offset-4">
-                    <button type="submit" class="btn btn-primary">
-                        Editar
-                    </button>
+                    @component(config("options.button_form"))
+                        @slot("class") btn btn-primary @endslot
+                        @slot("title") Editar @endslot
+                    @endcomponent
                 </div>
             </div>
             {!! Form::close() !!}

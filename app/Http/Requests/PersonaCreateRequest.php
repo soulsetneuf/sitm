@@ -24,7 +24,20 @@ class PersonaCreateRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            "ci"=>"integer|unique:persona",
+            "nombre"=>"regex:/^[A-Za-z. -]+$/",
+            "apellido_paterno"=>"regex:/^[A-Za-z. -]+$/",
+            "apellido_materno"=>"regex:/^[A-Za-z. -]+$/",
+            "fecha_nacimiento"=>"required",
+            "telefono"=>"integer"
+        ];
+    }
+    public function messages()
+    {
+        return [
+            "nombre.regex" => "Solo espacios y letras",
+            "apellido_paterno.regex" => "Solo espacios y letras",
+            "apellido_materno.regex" => "Solo espacios y letras",
         ];
     }
 }

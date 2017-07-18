@@ -1,4 +1,4 @@
-@extends('layouts.master2')
+@extends('layouts.master')
 @section('title', 'SGECC')
 @section('AdmTitle', 'Lista de clientes')
 @section('personas_active','class="panel panel-default dropdown active"')

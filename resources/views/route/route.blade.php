@@ -1,0 +1,1 @@
+{{ route($path_controller.'.'.$action, $id) }}

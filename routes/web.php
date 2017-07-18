@@ -15,4 +15,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::resource('persona','PersonaController');
+Route::resource('medico','MedicoController');
+Route::resource('equipo','EquipoController');
+Route::resource('cama','CamaController');
+Route::resource('paciente','PacienteController');
+Route::resource('tratamiento','TratamientoController');
 Route::resource('file', 'FileController');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

@@ -1,0 +1,1 @@
+<a href="{{ route($path_controller.'.'.$action) }}" class="{{ $class }}">{{ $text }}</a>

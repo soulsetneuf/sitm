@@ -6,17 +6,19 @@
 @section('rptasistencias_collapse','class="panel-collapse collapse"')
 @section('content')
     <ol class="breadcrumb">
-        <li><a href="{{ route($path_controller.'.index') }}">Inicio</a></li>
-        <li class="active"><a href=""> {{ $obj->nombre_completo }}</a></li>
+        @include(config("options.breadcrumb_li"),["class"=>"","page"=>"index","id"=>"","title"=>"Inicio"])
+        @include(config("options.breadcrumb_li"),["class"=>"active","page"=>"show","id"=>$obj->id,"title"=>$obj->nombre_completo])
     </ol>
     <br>
-
     <div class="card">
         <div class="card-body no-padding">
             <div role="tabpanel">
                 <!-- Nav tabs -->
                 <ul class="nav nav-tabs" role="tablist">
-                    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab" aria-expanded="true">Informacion Basica</a></li>
+                    @component(config("options.nav_li"))
+                        @slot("class") active @endslot
+                        @slot("title") Información basica @endslot
+                    @endcomponent
                 </ul>
                 <!-- Tab panes -->
                 <div class="tab-content">
@@ -39,11 +41,6 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-xs-4" align="center">
-                                <a href="#">
-                                    <img src="{{URL::asset('/img/perfil.png')}}" width="150" height="150">
-                                </a>
                             </div>
                         </div>
                     </div>

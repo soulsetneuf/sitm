@@ -1,27 +1,22 @@
 @extends('layouts.master')
-@section('AdmTitle', 'Lista de clientes')
+@section('AdmTitle', 'Lista de personas')
 @section('personas_active','class="panel panel-default dropdown active"')
 @section('personas_collapse','class="panel-collapse"')
 @section('rptasistencias_active','class="panel panel-default dropdown"')
 @section('rptasistencias_collapse','class="panel-collapse collapse"')
 @section('content')
     <ol class="breadcrumb">
-        <li class="active"><a href="{{ route($path_controller.'.index') }}">Inicio</a></li>
+        @include(config("options.breadcrumb_li"),["class"=>"active","page"=>"index","id"=>"","title"=>"Inicio"])
     </ol>
     <br>
     <div class="card">
-        <div class="card-header">
-            <div class="card-title">
-                <div class="title">Lista</div>
-            </div>
-        </div>
-
+        @component(config("options.card_header")) @slot("title") Lista @endslot @endcomponent
         <div class="card-body">
             <div class="block-flat">
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-md-12">
-                            @include("botton.generic",["action"=>"create","class"=>"btn btn-success","text"=>"Registrar nueva persona"])
+                            @include(config("options.button_generic"),["action"=>"create","class"=>"btn btn-success","text"=>"Registrar nueva persona"])
                         </div>
                     </div>
                     <div class="content">
@@ -50,7 +45,7 @@
                                         <td>{{ $row->fecha_nacimiento }}</td>
                                         <td>{{ $row->telefono }}</td>
                                         <td class="text-center">
-                                            @include("botton.action",["id"=>$row->id])
+                                            @include(config("options.button_group_actions"),["id"=>$row->id])
                                         </td>
                                     </tr>
                                 @endforeach

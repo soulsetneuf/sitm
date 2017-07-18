@@ -86,11 +86,7 @@ class PersonaController extends Controller
      */
     public function destroy($id)
     {
-        $this->notFound(Persona::find($id));
-        $_institucion  = Persona::find($id);
-        $_institucion->_estado         = 'X';
-        $_institucion->_id_usuario     = \Auth::user()->id;
-        $_institucion->save();
-        return $this->show($id);
+        Persona::destroy($id);
+        return redirect($this->path_controller);
     }
 }

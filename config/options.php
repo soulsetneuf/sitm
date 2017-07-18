@@ -2,8 +2,19 @@
 return [
     "collapse"=>"components.collapse",
     "dropdown"=>"components.dropdown",
+    "breadcrumb_li"=>"components.breadcrumb.li",
+    "card_header"=>"components.card.header",
+    "button_group_actions"=>"button.group_actions",
+    "button_form"=>"components.button.form",
+    "button_generic"=>"components.button.generic",
+    "nav_li"=>"components.nav.li",
     "sexo"=>[
         "Masculino"=>"Masculino",
         "Femenino"=>"Femenino"
-    ]
+    ],
+    "paciente_tipo"=>[
+        "SIS"=>"SIS",
+        "Interno"=>"Interno",
+        "Externo"=>"Externo"
+    ],
 ];

@@ -11,19 +11,16 @@
     </ol>
     <br>
     <div class="card">
-        <div class="card-header">
-            <div class="card-title">
-                <div class="title">Registrar nueva persona</div>
-            </div>
-        </div>
+        @component(config("options.card_header")) @slot("title") Registrar nueva persona @endslot @endcomponent
         <div class="card-body">
             {!! Form::open(['route' => $path_controller.'.store', 'method' => 'post', "files"=>true]) !!}
             @include($path_view.".form")
             <div class="form-group">
                 <div class="col-md-6 col-md-offset-4">
-                    <button type="submit" class="btn btn-primary">
-                        Registrar
-                    </button>
+                    @component(config("options.button_form"))
+                        @slot("class") btn btn-primary @endslot
+                        @slot("title") Registrar @endslot
+                    @endcomponent
                 </div>
             </div>
             {!! Form::close() !!}
