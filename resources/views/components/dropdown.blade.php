@@ -9,7 +9,9 @@
 	<div id="dropdown-{{$id}}" class="panel-collapse collapse">
 		<div class="panel-body">
 			<ul class="nav navbar-nav">
-				<li><a href="">{{$submenu}}</a>
+				<li>
+                    <a href="http://localhost/sitm/public/{{$ruta}}">{{$submenu}}</a>
+
 				</li>
 			</ul>
 		</div>

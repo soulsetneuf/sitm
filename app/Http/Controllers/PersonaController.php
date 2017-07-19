@@ -18,7 +18,21 @@ class PersonaController extends Controller
     var $path_controller="persona";
     public function index(Request $request)
     {
-        return \View::make($this->path_view.'.index', ["obj"=>Persona::paginate(10), "path_controller"=>$this->path_controller, "path_view"=>$this->path_view]);
+        $ci=$request->get("ci");
+        $nombre=$request->get("nombre");
+        $apellido_paterno=$request->get("apellido_paterno");
+        $apellido_materno=$request->get("apellido_materno");
+        return \View::make($this->path_view.'.index',
+            [
+                "obj"=>Persona::ci($ci)->nombre($nombre)->paterno($apellido_paterno)->materno($apellido_materno)->paginate(10),
+                "path_controller"=>$this->path_controller,
+                "path_view"=>$this->path_view,
+                "ci"=>$ci,
+                "nombre"=>$nombre,
+                "apellido_paterno"=>$apellido_paterno,
+                "apellido_materno"=>$apellido_materno
+            ]
+        );
     }
     /**
      * Show the form for creating a new resource.

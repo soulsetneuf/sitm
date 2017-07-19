@@ -1,31 +1,31 @@
-<!DOCTYPE html>
-<html>
+@if (Auth::check())
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>@yield('title')</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- Fonts -->
+        <!--
+        <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:300,400' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        -->
+        <!-- CSS Libs -->
+        <link rel="stylesheet" type="text/css" href="{{URL::asset('/assets/css/bootstrap.min.css')}}">
+        <link rel="stylesheet" type="text/css" href="{{URL::asset('/assets/css/font-awesome.min.css')}}">
+        <link rel="stylesheet" type="text/css" href="{{URL::asset('/assets/css/animate.min.css')}}">
+        <link rel="stylesheet" type="text/css" href="{{URL::asset('/assets/css/bootstrap-switch.min.css')}}">
+        <link rel="stylesheet" type="text/css" href="{{URL::asset('/assets/css/checkbox3.min.css')}}">
+        <link rel="stylesheet" type="text/css" href="{{URL::asset('/assets/css/jquery.dataTables.min.css')}}">
+        <link rel="stylesheet" type="text/css" href="{{URL::asset('/assets/css/dataTables.bootstrap.css')}}">
+        <link rel="stylesheet" type="text/css" href="{{URL::asset('/assets/css/select2.min.css')}}">
+        <link rel="stylesheet" type="text/css" href="{{URL::asset('/assets/css/datepicker.css')}}">
+        <!-- CSS App -->
+        <link rel="stylesheet" type="text/css" href="{{URL::asset('/css/style.css')}}">
+        <link rel="stylesheet" type="text/css" href="{{URL::asset('/css/themes/flat-blue.css')}}">
+        <link rel="stylesheet" type="text/css" href="{{URL::asset('/css/dropzone.css')}}">
+    </head>
 
-<head>
-    <title>@yield('title')</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Fonts -->
-    <!--   
-    <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:300,400' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
-    -->
-    <!-- CSS Libs -->
-    <link rel="stylesheet" type="text/css" href="{{URL::asset('/assets/css/bootstrap.min.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{URL::asset('/assets/css/font-awesome.min.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{URL::asset('/assets/css/animate.min.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{URL::asset('/assets/css/bootstrap-switch.min.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{URL::asset('/assets/css/checkbox3.min.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{URL::asset('/assets/css/jquery.dataTables.min.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{URL::asset('/assets/css/dataTables.bootstrap.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{URL::asset('/assets/css/select2.min.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{URL::asset('/assets/css/datepicker.css')}}">
-    <!-- CSS App -->
-    <link rel="stylesheet" type="text/css" href="{{URL::asset('/css/style.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{URL::asset('/css/themes/flat-blue.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{URL::asset('/css/dropzone.css')}}">
-</head>
-
-<body class="flat-blue">
+    <body class="flat-blue">
     <div class="app-container expanded">
         <div class="row content-container">
             <nav class="navbar navbar-default navbar-fixed-top navbar-top">
@@ -48,22 +48,22 @@
 
                         <li class="dropdown profile">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-					 nombre del usuario <span class="caret"></span>
-			    </a>
+                                {{ Auth::user()->name }} <span class="caret"></span>
+                            </a>
                             <ul class="dropdown-menu animated fadeInDown">
                                 <li>
                                     <div class="profile-info">
                                         <h4 class="username">
-						 nombre del usuario
-					</h4>
-                                        <p> email del usuario </p>
+                                            {{ Auth::user()->name }}
+                                        </h4>
+                                        <p> {{ Auth::user()->email }} </p>
                                         <div class="btn-group margin-bottom-2x" role="group">
-                                            <button type="button" class="btn btn-default"><i class="fa fa-user"></i> Perfil</button>
+                                            <!--<button type="button" class="btn btn-default"><i class="fa fa-user"></i> Perfil</button>-->
                                             <a href="{{ url('/logout') }}" class="btn btn-default"  onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();"><i class="fa fa-sign-out"></i> Salir</a>
                                             <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
-                                            {{ csrf_field() }}
-                                            </form>                                                     
+                                                {{ csrf_field() }}
+                                            </form>
                                         </div>
                                     </div>
                                 </li>
@@ -87,35 +87,41 @@
                             </button>
                         </div>
                         <ul class="nav navbar-nav">
-                            <li>
-                                <a href="/home">
-                                    <span class="icon fa fa-tachometer"></span><span class="title">Dashboard</span>
-                                </a>
-                            </li>
                             @component(config("options.dropdown"))
-                                @slot("id") 1 @endslot
-                                @slot("menu") Personas @endslot
-                                @slot("submenu") Lista @endslot
+                            @slot("id") 1 @endslot
+                            @slot("menu") Personas @endslot
+                            @slot("submenu") Lista @endslot
+                            @slot("ruta") persona @endslot
                             @endcomponent
                             @component(config("options.dropdown"))
-                                @slot("id") 2 @endslot
-                                @slot("menu") Pacientes @endslot
-                                @slot("submenu") Lista @endslot
+                            @slot("id") 2 @endslot
+                            @slot("menu") Pacientes @endslot
+                            @slot("submenu") Lista @endslot
+                            @slot("ruta") paciente @endslot
                             @endcomponent
                             @component(config("options.dropdown"))
-                                @slot("id") 3 @endslot
-                                @slot("menu") Medicos @endslot
-                                @slot("submenu") Lista @endslot
+                            @slot("id") 3 @endslot
+                            @slot("menu") Medicos @endslot
+                            @slot("submenu") Lista @endslot
+                            @slot("ruta") medico @endslot
                             @endcomponent
                             @component(config("options.dropdown"))
-                                @slot("id") 4 @endslot
-                                @slot("menu") Camas @endslot
-                                @slot("submenu") Lista @endslot
+                            @slot("id") 4 @endslot
+                            @slot("menu") Camas @endslot
+                            @slot("submenu") Lista @endslot
+                            @slot("ruta") cama @endslot
                             @endcomponent
                             @component(config("options.dropdown"))
-                                @slot("id") 5 @endslot
-                                @slot("menu") Equipamiento @endslot
-                                @slot("submenu") Lista @endslot
+                            @slot("id") 5 @endslot
+                            @slot("menu") Equipamiento @endslot
+                            @slot("submenu") Lista @endslot
+                            @slot("ruta") equipo @endslot
+                            @endcomponent
+                            @component(config("options.dropdown"))
+                            @slot("id") 6 @endslot
+                            @slot("menu") Tratamiento @endslot
+                            @slot("submenu") Lista @endslot
+                            @slot("ruta") tratamiento @endslot
                             @endcomponent
                         </ul>
                     </div>
@@ -126,8 +132,8 @@
             <div class="container-fluid">
                 <div class="side-body padding-top">
                     <div class="row">
-                      <br>
-    				  @yield('content')
+                        <br>
+                        @yield('content')
                     </div>
                 </div>
             </div>
@@ -152,10 +158,14 @@
             <script type="text/javascript" src="{{URL::asset('/assets/js/ace/theme-github.js')}}"></script>
             <script type="text/javascript" src="{{URL::asset('/assets/js/bootstrap-datepicker.js')}}" charset="UTF-8"></script>
             <!-- Javascript -->
-            
+
             <script type="text/javascript" src="{{URL::asset('/js/app.js')}}"></script>
             <script type="text/javascript" src="{{URL::asset('/js/dropzone.js')}}"></script>
             @yield('script_content')
-</body>
+    </body>
 
-</html>
+    </html>
+@else
+    @include("layouts.app")
+    @include("auth.content")
+@endif

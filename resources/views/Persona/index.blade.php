@@ -11,6 +11,53 @@
     <br>
     <div class="card">
         @component(config("options.card_header")) @slot("title") Lista @endslot @endcomponent
+
+        {!! Form::open(['route' => $path_controller.'.index', 'method' => 'GET']) !!}
+        <table class="table">
+            <tr>
+                <td>CI</td>
+                <td>
+                    @if(is_null($ci))
+                        {!! Form::text("ci",null,["id"=>"ci","class"=>"form-control","autofocus"=>true])!!}
+                    @else
+                        {!! Form::text("ci",$ci,["id"=>"ci","class"=>"form-control"])!!}
+                    @endif
+                </td>
+                <td>Nombre Completo</td>
+                <td>
+                    @if(is_null($nombre))
+                        {!! Form::text("nombre",null,["id"=>"nombre","class"=>"form-control","autofocus"=>true])!!}
+                    @else
+                        {!! Form::text("nombre",$nombre,["id"=>"nombre","class"=>"form-control"])!!}
+                    @endif
+                </td>
+            </tr>
+            <tr>
+                <td>Apellido Paterno</td>
+                <td>
+                    @if(is_null($apellido_paterno))
+                        {!! Form::text("apellido_paterno",null,["id"=>"apellido_paterno","class"=>"form-control","autofocus"=>true])!!}
+                    @else
+                        {!! Form::text("apellido_paterno",$apellido_paterno,["id"=>"apellido_paterno","class"=>"form-control"])!!}
+                    @endif
+                </td>
+                <td>Apellido Materno</td>
+                <td>
+                    @if(is_null($apellido_materno))
+                        {!! Form::text("apellido_materno",null,["id"=>"apellido_materno","class"=>"form-control","autofocus"=>true])!!}
+                    @else
+                        {!! Form::text("apellido_materno",$apellido_materno,["id"=>"apellido_materno","class"=>"form-control"])!!}
+                    @endif
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button type="submit" class="btn btn-primary">Buscar</button>
+                </td>
+            </tr>
+        </table>
+        {!! Form::close() !!}
+
         <div class="card-body">
             <div class="block-flat">
                 <div class="panel-body">

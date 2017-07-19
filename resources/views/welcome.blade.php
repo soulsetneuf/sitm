@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('title', 'SGECC')
-@section('AdmTitle', 'Lista de clientes')
+@section('AdmTitle', '')
 @section('personas_active','class="panel panel-default dropdown active"')
 @section('personas_collapse','class="panel-collapse"')
 @section('rptasistencias_active','class="panel panel-default dropdown"')
